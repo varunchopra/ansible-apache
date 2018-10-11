@@ -1,0 +1,21 @@
+---
+- name: "Include variables"
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: "Include os relevant tasks"
+  include_tasks: "install-{{ ansible_os_family }}.yml"
+
+- name: "Ensure latest index.html is present"
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+
+- name: "Ensure relevant services started and enabled on boot"
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items: "{{ apache_services }}"
+
+- name: "Configure firewall to allow traffic"
+  include_tasks: "configure-{{ ansible_os_family }}-firewall.yml"

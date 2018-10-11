@@ -1,0 +1,7 @@
+---
+- name: "Whitelist httpd in firewalld"
+  firewalld:
+    service: "{{ firewall_svc }}"
+    state: enabled
+    permanent: true
+    immediate: true

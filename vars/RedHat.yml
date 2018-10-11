@@ -1,0 +1,8 @@
+---
+apache_packages:
+  - httpd
+  - firewalld
+apache_services:
+  - httpd
+  - firewalld
+firewall_svc: http

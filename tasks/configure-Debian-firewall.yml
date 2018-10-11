@@ -1,0 +1,11 @@
+---
+- name: "Enable ufw"
+  ufw:
+    direction: incoming
+    policy: deny
+    state: enabled
+
+- name: "Whitelist apache2 in ufw"
+  ufw:
+    rule: allow
+    port: "{{ firewall_svc }}"

@@ -1,0 +1,8 @@
+---
+apache_packages:
+  - apache2
+  - ufw
+apache_services:
+  - apache2
+  - ufw
+firewall_svc: http
